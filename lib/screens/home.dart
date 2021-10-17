@@ -36,14 +36,16 @@ class _HomeState extends State<Home> {
                     dynamic result =
                         await Navigator.pushNamed(context, '/location');
 
-                    setState(() {
-                      data = {
-                        'time': result['time'],
-                        'flag': result['flag'],
-                        'isDaytime': result['isDaytime'],
-                        'location': result['location']
-                      };
-                    });
+                    if (result != null) {
+                      return setState(() {
+                        data = {
+                          'time': result['time'],
+                          'flag': result['flag'],
+                          'isDaytime': result['isDaytime'],
+                          'location': result['location']
+                        };
+                      });
+                    }
                   },
                   icon: const Icon(Icons.edit_location),
                   label: const Text('Edit location')),
